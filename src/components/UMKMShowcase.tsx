@@ -143,6 +143,13 @@ export default function UMKMShowcase() {
                     width={400}
                     height={200}
                     className="w-full h-full object-cover"
+                    onError={(e) => {
+                      console.error('UMKMShowcase - Failed to load image:', umkm.image);
+                      (e.target as HTMLImageElement).style.display = 'none';
+                    }}
+                    onLoad={() => {
+                      console.log('UMKMShowcase - Image loaded successfully:', umkm.image);
+                    }}
                   />
                 ) : (
                   <span className="text-6xl text-white">

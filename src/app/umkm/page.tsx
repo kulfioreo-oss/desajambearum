@@ -25,6 +25,7 @@ export default function UMKMDirectory() {
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
   const [selectedDusun, setSelectedDusun] = useState<string>('all')
   const [adminWhatsapp, setAdminWhatsapp] = useState<string>('6281234567890')
+  const [failedImages, setFailedImages] = useState<Set<string>>(new Set())
 
   useEffect(() => {
     loadUMKMData()
@@ -34,10 +35,17 @@ export default function UMKMDirectory() {
   const loadUMKMData = async () => {
     try {
              // Use public API for UMKM data
-       const response = await fetch('/api/umkm')
+      const response = await fetch('/api/umkm')
       if (response.ok) {
         const data = await response.json()
         if (data.success) {
+          console.log('UMKM data loaded:', data.data);
+          // Debug image URLs
+          data.data.forEach((umkm: UMKM) => {
+            if (umkm.image) {
+              console.log(`UMKM ${umkm.name} - Image URL:`, umkm.image);
+            }
+          });
           setUmkmList(data.data.filter((umkm: UMKM) => umkm.isActive))
         }
       }
@@ -183,13 +191,29 @@ export default function UMKMDirectory() {
                 <div key={umkm.id} className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden">
                   {/* Image */}
                   <div className="h-48 bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center">
-                    {umkm.image ? (
+                    {(() => {
+                      console.log(`Rendering ${umkm.name}:`, {
+                        hasImage: !!umkm.image,
+                        imageUrl: umkm.image,
+                        isFailedImage: failedImages.has(umkm.id)
+                      });
+                      return null;
+                    })()}
+                    {umkm.image && !failedImages.has(umkm.id) ? (
                       <Image
                         src={umkm.image}
                         alt={umkm.name}
                         width={400}
                         height={200}
                         className="w-full h-full object-cover"
+                        onError={(e) => {
+                          console.error('Failed to load image:', umkm.image);
+                          console.error('Error details:', e);
+                          setFailedImages(prev => new Set(prev).add(umkm.id));
+                        }}
+                        onLoad={() => {
+                          console.log('Image loaded successfully:', umkm.image);
+                        }}
                       />
                     ) : (
                       <div className="text-6xl text-white">

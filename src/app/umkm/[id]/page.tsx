@@ -149,6 +149,13 @@ export default function UMKMDetailPage() {
                     width={500}
                     height={500}
                     className="w-full h-full object-cover"
+                    onError={(e) => {
+                      console.error('UMKM Detail - Failed to load image:', umkm.image);
+                      (e.target as HTMLImageElement).style.display = 'none';
+                    }}
+                    onLoad={() => {
+                      console.log('UMKM Detail - Image loaded successfully:', umkm.image);
+                    }}
                   />
                 ) : (
                   <div className={`w-full h-full bg-gradient-to-br ${getCategoryColor(umkm.category)} flex items-center justify-center`}>
