@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     'Hutan Lindung Petak 124',
     'river trekking Jember',
     'agrowisata Jawa Timur',
-    'wisata alam Silo',
+    'wisata alam Sumberjambe',
     'trekking hutan pinus',
     'Sungai Bire',
     'wisata durian Jember',

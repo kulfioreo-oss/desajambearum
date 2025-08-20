@@ -11,7 +11,7 @@ export default function WisataPage() {
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Desa Jambearum",
-      "addressRegion": "Kecamatan Silo, Kabupaten Jember, Jawa Timur",
+      "addressRegion": "Kecamatan Sumberjambe, Kabupaten Jember, Jawa Timur",
       "addressCountry": "ID"
     },
     "geo": {

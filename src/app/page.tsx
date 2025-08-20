@@ -288,7 +288,7 @@ export default function Home() {
             <div>
               <h3 className="text-2xl font-bold mb-4">Desa Jambearum</h3>
               <p className="text-gray-400 leading-relaxed">
-                Portal resmi UMKM dan informasi Desa Jambearum, Kecamatan Silo, 
+                Portal resmi UMKM dan informasi Desa Jambearum, Kecamatan Sumberjambe, 
                 Kabupaten Jember, Jawa Timur.
               </p>
             </div>
@@ -299,7 +299,7 @@ export default function Home() {
                 <li><Link href="#sejarah" className="hover:text-white transition-colors">Sejarah Desa</Link></li>
                 <li><Link href="#umkm" className="hover:text-white transition-colors">UMKM</Link></li>
                 <li><a href="#" className="hover:text-white transition-colors">Wisata</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Kontak</a></li>
+
               </ul>
             </div>
             

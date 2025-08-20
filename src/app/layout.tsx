@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     default: "Desa Jambearum - Portal UMKM & Wisata Desa",
     template: "%s | Desa Jambearum"
   },
-  description: "Portal resmi UMKM dan wisata Desa Jambearum, Kecamatan Silo, Kabupaten Jember. Temukan produk lokal berkualitas dan keindahan alam di kaki Gunung Raung dari para pelaku UMKM desa.",
+  description: "Portal resmi UMKM dan wisata Desa Jambearum, Kecamatan Sumberjambe, Kabupaten Jember. Temukan produk lokal berkualitas dan keindahan alam di kaki Gunung Raung dari para pelaku UMKM desa.",
   keywords: [
     "Desa Jambearum",
     "UMKM",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     "kerajinan tangan",
     "pertanian",
     "produk olahan",
-    "Silo",
+    "Sumberjambe",
     "Jawa Timur"
   ],
   authors: [{ name: "Pemerintah Desa Jambearum" }],

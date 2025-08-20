@@ -232,8 +232,8 @@ Program kolaborasi **KKN UNEJ** dengan masyarakat:
 
 ### **Emergency Contacts**
 - 🚨 **Emergency:** 112
-- 🏥 **Puskesmas Silo:** (0331) xxx-xxxx
-- 👮 **Polsek Silo:** (0331) xxx-xxxx
+- 🏥 **Puskesmas Sumberjambe:** (0331) xxx-xxxx
+- 👮 **Polsek Sumberjambe:** (0331) xxx-xxxx
 - 🚒 **Damkar Jember:** (0331) xxx-xxxx
 
 ### **Local Guides & Info**

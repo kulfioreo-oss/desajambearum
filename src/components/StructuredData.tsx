@@ -44,13 +44,13 @@ export default function StructuredData({ type, data }: StructuredDataProps) {
           "@context": "https://schema.org",
           "@type": "GovernmentOrganization",
           "name": "Pemerintah Desa Jambearum",
-          "description": "Pemerintah Desa Jambearum, Kecamatan Silo, Kabupaten Jember",
+          "description": "Pemerintah Desa Jambearum, Kecamatan Sumberjambe, Kabupaten Jember",
           "url": baseUrl,
           "logo": `${baseUrl}/logo.png`,
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "Desa Jambearum",
-            "addressLocality": "Silo",
+            "addressLocality": "Sumberjambe",
             "addressRegion": "Jawa Timur",
             "postalCode": "68171",
             "addressCountry": "ID"
