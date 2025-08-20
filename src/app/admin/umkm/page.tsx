@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 
 interface UMKM {
   id: string
@@ -36,6 +37,7 @@ export default function AdminUMKMManagement() {
   const [showDeleteModal, setShowDeleteModal] = useState(false)
   const [deleteTarget, setDeleteTarget] = useState<string | null>(null)
   const [bulkAction, setBulkAction] = useState('')
+  const [failedImages, setFailedImages] = useState<Set<string>>(new Set())
   const router = useRouter()
 
   useEffect(() => {
@@ -396,6 +398,9 @@ export default function AdminUMKMManagement() {
                     UMKM
                   </th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Gambar
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Kategori
                   </th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -426,11 +431,23 @@ export default function AdminUMKMManagement() {
                     <td className="px-6 py-4">
                       <div className="flex items-center">
                         <div className="flex-shrink-0 h-10 w-10">
-                          <div className="h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center">
-                            <span className="text-lg font-medium text-gray-600">
-                              {getCategoryIcon(umkm.category)}
-                            </span>
-                          </div>
+                          {umkm.image && !failedImages.has(umkm.id) ? (
+                            <Image
+                              src={umkm.image}
+                              alt={umkm.name}
+                              width={40}
+                              height={40}
+                              className="h-10 w-10 rounded-full object-cover border"
+                              onError={() => setFailedImages(prev => new Set([...prev, umkm.id]))}
+                              onLoad={() => console.log('Admin preview loaded:', umkm.image)}
+                            />
+                          ) : (
+                            <div className="h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center">
+                              <span className="text-lg font-medium text-gray-600">
+                                {getCategoryIcon(umkm.category)}
+                              </span>
+                            </div>
+                          )}
                         </div>
                         <div className="ml-4">
                           <div className="text-sm font-medium text-gray-900">{umkm.name}</div>
@@ -439,6 +456,32 @@ export default function AdminUMKMManagement() {
                             {umkm.products.length > 2 && ` +${umkm.products.length - 2} lainnya`}
                           </div>
                         </div>
+                      </div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="flex items-center justify-center">
+                        {umkm.image && !failedImages.has(umkm.id) ? (
+                          <div className="flex items-center">
+                            <div className="h-12 w-12 rounded-lg overflow-hidden border-2 border-green-200">
+                              <Image
+                                src={umkm.image}
+                                alt={umkm.name}
+                                width={48}
+                                height={48}
+                                className="h-12 w-12 object-cover"
+                                onError={() => setFailedImages(prev => new Set([...prev, umkm.id]))}
+                              />
+                            </div>
+                            <span className="ml-2 text-xs text-green-600 font-medium">✓ Ada</span>
+                          </div>
+                        ) : (
+                          <div className="flex items-center">
+                            <div className="h-12 w-12 rounded-lg bg-gray-100 flex items-center justify-center border-2 border-gray-200">
+                              <span className="text-gray-400 text-lg">📷</span>
+                            </div>
+                            <span className="ml-2 text-xs text-gray-400 font-medium">Tidak ada</span>
+                          </div>
+                        )}
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">

@@ -10,36 +10,51 @@ export default function Home() {
       
       <div className="min-h-screen pt-16">
       {/* Hero Section */}
-      <section className="relative h-screen bg-gradient-to-br from-green-800 via-green-600 to-emerald-500 overflow-hidden">
+      <section className="relative h-screen overflow-hidden">
+        {/* Background Image */}
+        <div
+  className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{
+            backgroundImage: "url('/beranda/test.webp')",
+          }}
+        >
+          {/* Gradient Overlay for better text contrast and natural look */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/30 to-transparent"></div>
+          {/* Bottom gradient for better readability */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+          {/* Subtle green tint to maintain brand consistency */}
+          <div className="absolute inset-0 bg-green-900/15"></div>
+        </div>
+        
         {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{
             backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
           }}></div>
         </div>
         
         {/* Floating Elements */}
-        <div className="absolute top-20 left-10 w-20 h-20 bg-white/10 rounded-full animate-pulse"></div>
+        <div className="absolute top-20 left-10 w-20 h-20 bg-white/5 rounded-full animate-pulse"></div>
         <div className="absolute top-40 right-20 w-16 h-16 bg-white/5 rounded-full animate-bounce"></div>
-        <div className="absolute bottom-32 left-1/4 w-12 h-12 bg-white/10 rounded-full animate-pulse delay-1000"></div>
+        <div className="absolute bottom-32 left-1/4 w-12 h-12 bg-white/5 rounded-full animate-pulse delay-1000"></div>
         
-        <div className="relative z-10 container mx-auto px-6 h-full flex items-center">
+        <div className="relative z-20 container mx-auto px-6 h-full flex items-center">
           <div className="max-w-4xl">
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-              Desa <span className="text-yellow-300">Jambearum</span>
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)] [text-shadow:_2px_2px_4px_rgb(0_0_0_/_80%)]">
+              Desa <span className="text-yellow-400 drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]">Jambearum</span>
             </h1>
-            <p className="text-xl md:text-2xl text-green-100 mb-8 leading-relaxed">
+            <p className="text-xl md:text-2xl text-white mb-8 leading-relaxed drop-shadow-[0_2px_6px_rgba(0,0,0,0.7)] font-semibold">
               Portal UMKM & Wisata Desa di Kaki Gunung Raung
             </p>
-            <p className="text-lg text-green-50 mb-10 max-w-2xl">
+            <p className="text-lg text-white/95 mb-10 max-w-2xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)] font-medium bg-black/20 backdrop-blur-sm p-4 rounded-lg border border-white/20">
               Temukan produk lokal berkualitas dan keindahan alam dari desa yang kaya akan sejarah, 
               terletak di perbatasan Jember-Bondowoso.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="#umkm" className="bg-yellow-400 hover:bg-yellow-500 text-green-900 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+              <Link href="#umkm" className="bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 text-green-900 px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-[0_8px_20px_rgba(0,0,0,0.3)] border-2 border-yellow-300/50">
                 Jelajahi UMKM
               </Link>
-              <Link href="#sejarah" className="border-2 border-white text-white hover:bg-white hover:text-green-900 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300">
+              <Link href="#sejarah" className="border-2 border-white bg-white/10 backdrop-blur-sm text-white hover:bg-white hover:text-green-900 px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 shadow-[0_8px_20px_rgba(0,0,0,0.2)]">
                 Pelajari Sejarah
               </Link>
             </div>
@@ -48,7 +63,7 @@ export default function Home() {
         
         {/* Scroll Indicator */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
+          <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center drop-shadow-lg">
             <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
           </div>
         </div>
@@ -244,7 +259,7 @@ export default function Home() {
           </div>
           
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 Desa Jambearum. Semua hak dilindungi undang-undang.</p>
+            <p>Dibuat dengan ❤️ dari KKN Kolaboratif Jambearum 2025</p>
           </div>
         </div>
       </footer>

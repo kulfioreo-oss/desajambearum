@@ -62,7 +62,7 @@ export default function WisataPage() {
           {/* Background Pattern */}
           <div className="absolute inset-0 opacity-20">
             <div className="absolute inset-0" style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.3'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+              backgroundImage: `url("/wisata/bg.webp")`
             }}></div>
           </div>
           
@@ -156,8 +156,13 @@ export default function WisataPage() {
               </div>
               
               <div className="relative">
-                <div className="aspect-square bg-gradient-to-br from-green-400 to-emerald-500 rounded-2xl flex items-center justify-center">
-                  <div className="text-8xl text-white">🏔️</div>
+                <div 
+                  className="aspect-square rounded-2xl bg-cover bg-center bg-gray-300 flex items-center justify-center"
+                  style={{
+                    backgroundImage: "url('/wisata/landskap.webp')"
+                  }}
+                >
+              
                 </div>
                 <div className="absolute -bottom-6 -right-6 bg-yellow-400 text-green-900 p-4 rounded-xl shadow-lg">
                   <div className="font-bold">42 KM</div>
@@ -185,8 +190,13 @@ export default function WisataPage() {
             <div className="mb-16">
               <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
                 <div className="grid grid-cols-1 lg:grid-cols-2">
-                  <div className="aspect-video lg:aspect-square bg-gradient-to-br from-gray-400 to-slate-500 flex items-center justify-center">
-                    <div className="text-8xl text-white">🪨</div>
+                  <div 
+                    className="aspect-video lg:aspect-square bg-cover bg-center bg-gray-300 flex items-center justify-center"
+                    style={{
+                      backgroundImage: "url('/wisata/lahar.webp')"
+                    }}
+                  >
+            
                   </div>
                   <div className="p-8 lg:p-12 flex flex-col justify-center">
                     <div className="inline-flex items-center px-4 py-2 bg-red-100 text-red-800 text-sm font-medium rounded-full mb-4 w-fit">
@@ -234,8 +244,13 @@ export default function WisataPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {/* Sungai Bire */}
               <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                <div className="h-48 bg-gradient-to-br from-blue-400 to-cyan-500 flex items-center justify-center">
-                  <span className="text-6xl text-white">🏞️</span>
+                <div 
+                  className="h-48 bg-cover bg-center bg-gray-300 flex items-center justify-center"
+                  style={{
+                    backgroundImage: "url('/wisata/bire.webp')"
+                  }}
+                >
+                
                 </div>
                 <div className="p-6">
                   <h3 className="text-2xl font-bold text-gray-800 mb-3">Sungai Bire</h3>
@@ -265,8 +280,13 @@ export default function WisataPage() {
 
               {/* Agrowisata */}
               <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                <div className="h-48 bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center">
-                  <span className="text-6xl text-white">🌱</span>
+                <div 
+                  className="h-48 bg-cover bg-center bg-gray-300 flex items-center justify-center"
+                  style={{
+                    backgroundImage: "url('/wisata/durian.webp')"
+                  }}
+                >
+                  <span className="text-6xl text-white/70">🌱</span>
                 </div>
                 <div className="p-6">
                   <h3 className="text-2xl font-bold text-gray-800 mb-3">Agrowisata & Kuliner</h3>
