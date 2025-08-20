@@ -24,9 +24,11 @@ export default function UMKMDirectory() {
   const [loading, setLoading] = useState(true)
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
   const [selectedDusun, setSelectedDusun] = useState<string>('all')
+  const [adminWhatsapp, setAdminWhatsapp] = useState<string>('6281234567890')
 
   useEffect(() => {
     loadUMKMData()
+    loadAdminWhatsapp()
   }, [])
 
   const loadUMKMData = async () => {
@@ -43,6 +45,20 @@ export default function UMKMDirectory() {
       console.error('Error loading UMKM data:', error)
     } finally {
       setLoading(false)
+    }
+  }
+
+  const loadAdminWhatsapp = async () => {
+    try {
+      const res = await fetch('/api/settings/public')
+      if (res.ok) {
+        const data = await res.json()
+        if (data?.data?.whatsapp) {
+          setAdminWhatsapp(data.data.whatsapp)
+        }
+      }
+    } catch (e) {
+      // keep default
     }
   }
 
@@ -79,7 +95,7 @@ export default function UMKMDirectory() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-16">
+    <div className="min-h-screen bg-gray-100 pt-16">
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-green-600 via-emerald-600 to-teal-600 text-white py-20">
         <div className="container mx-auto px-6 text-center">
@@ -109,43 +125,44 @@ export default function UMKMDirectory() {
       </section>
 
       {/* Filters */}
-      <section className="py-8 bg-white border-b border-gray-200">
+      <section className="py-8 bg-gray-100">
         <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
-            <div className="flex flex-col md:flex-row gap-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Kategori</label>
-                <select
-                  value={selectedCategory}
-                  onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-green-500 focus:border-green-500"
-                >
-                  <option value="all">Semua Kategori</option>
-                  {categories.map(category => (
-                    <option key={category} value={category}>
-                      {getCategoryIcon(category)} {category}
-                    </option>
-                  ))}
-                </select>
+          <div className="bg-white rounded-lg shadow-md p-6">
+            <div className="flex flex-col md:flex-row gap-4 items-end justify-between">
+              <div className="flex flex-col md:flex-row gap-4 w-full md:w-auto">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700">Kategori</label>
+                  <select
+                    value={selectedCategory}
+                    onChange={(e) => setSelectedCategory(e.target.value)}
+                    className="mt-1 block w-full px-4 py-2 text-gray-800 bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-colors duration-300"
+                  >
+                    <option value="all">Semua Kategori</option>
+                    {categories.map(category => (
+                      <option key={category} value={category}>
+                        {getCategoryIcon(category)} {category}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-gray-700">Dusun</label>
+                  <select
+                    value={selectedDusun}
+                    onChange={(e) => setSelectedDusun(e.target.value)}
+                    className="mt-1 block w-full px-4 py-2 text-gray-800 bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-colors duration-300"
+                  >
+                    <option value="all">Semua Dusun</option>
+                    {dusuns.map(dusun => (
+                      <option key={dusun} value={dusun}>{dusun}</option>
+                    ))}
+                  </select>
+                </div>
               </div>
-              
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Dusun</label>
-                <select
-                  value={selectedDusun}
-                  onChange={(e) => setSelectedDusun(e.target.value)}
-                  className="border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-green-500 focus:border-green-500"
-                >
-                  <option value="all">Semua Dusun</option>
-                  {dusuns.map(dusun => (
-                    <option key={dusun} value={dusun}>{dusun}</option>
-                  ))}
-                </select>
+              <div className="text-sm text-gray-600 w-full md:w-auto">
+                Menampilkan <span className="font-semibold">{filteredUMKM.length}</span> dari <span className="font-semibold">{umkmList.length}</span> UMKM
               </div>
-            </div>
-            
-            <div className="text-sm text-gray-600">
-              Menampilkan {filteredUMKM.length} dari {umkmList.length} UMKM
             </div>
           </div>
         </div>
@@ -270,17 +287,19 @@ export default function UMKMDirectory() {
             Punya usaha di Desa Jambearum? Daftarkan UMKM Anda dan bergabung dengan direktori online kami!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link 
-              href="/daftar-umkm" 
+            <a 
+              href={`https://wa.me/${adminWhatsapp}?text=${encodeURIComponent('Halo Admin, saya ingin mendaftar UMKM saya di website Desa Jambearum.')}`}
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-yellow-400 hover:bg-yellow-500 text-green-900 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105"
             >
-              Daftarkan UMKM
-            </Link>
+              Daftarkan UMKM via WhatsApp
+            </a>
             <Link 
-              href="/#kontak" 
+              href="/wisata" 
               className="border-2 border-white text-white hover:bg-white hover:text-green-900 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300"
             >
-              Hubungi Kami
+              Jelajahi Wisata
             </Link>
           </div>
         </div>

@@ -194,25 +194,25 @@ export default function AdminUMKMManagement() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-100">
       {/* Header */}
-      <div className="bg-white shadow-sm border-b">
+      <div className="bg-white/80 backdrop-blur-lg sticky top-0 z-10 shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-6">
+          <div className="flex justify-between items-center py-5">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">Manajemen UMKM</h1>
-              <p className="text-gray-600 mt-1">Kelola data UMKM Desa Jambearum</p>
+              <h1 className="text-2xl font-bold text-gray-900">Manajemen UMKM</h1>
+              <p className="text-gray-500 mt-1 text-sm">Kelola data UMKM Desa Jambearum</p>
             </div>
             <div className="flex items-center space-x-4">
               <Link 
                 href="/admin/dashboard"
-                className="text-gray-600 hover:text-gray-800 transition-colors"
+                className="text-sm font-medium text-gray-600 hover:text-green-600 transition-colors flex items-center"
               >
-                ← Kembali ke Dashboard
+                <span className="mr-1">←</span> Kembali ke Dashboard
               </Link>
               <Link
                 href="/admin/umkm/create"
-                className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg font-medium transition-colors"
+                className="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-lg font-medium transition-colors text-sm shadow-sm"
               >
                 + Tambah UMKM
               </Link>
@@ -223,26 +223,26 @@ export default function AdminUMKMManagement() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-          <div className="bg-white rounded-xl shadow-sm p-6 border">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <div className="bg-white rounded-lg shadow-md p-5">
             <div className="flex items-center">
-              <div className="p-3 rounded-full bg-blue-100">
-                <span className="text-2xl">📊</span>
+              <div className="p-3 rounded-full bg-blue-100 mr-4">
+                <span className="text-xl">📊</span>
               </div>
-              <div className="ml-4">
-                <p className="text-sm font-medium text-gray-600">Total UMKM</p>
+              <div>
+                <p className="text-sm font-medium text-gray-500">Total UMKM</p>
                 <p className="text-2xl font-bold text-gray-900">{umkmList.length}</p>
               </div>
             </div>
           </div>
           
-          <div className="bg-white rounded-xl shadow-sm p-6 border">
+          <div className="bg-white rounded-lg shadow-md p-5">
             <div className="flex items-center">
-              <div className="p-3 rounded-full bg-green-100">
-                <span className="text-2xl">✅</span>
+              <div className="p-3 rounded-full bg-green-100 mr-4">
+                <span className="text-xl">✅</span>
               </div>
-              <div className="ml-4">
-                <p className="text-sm font-medium text-gray-600">Aktif</p>
+              <div>
+                <p className="text-sm font-medium text-gray-500">Aktif</p>
                 <p className="text-2xl font-bold text-green-600">
                   {umkmList.filter(umkm => umkm.isActive).length}
                 </p>
@@ -250,13 +250,13 @@ export default function AdminUMKMManagement() {
             </div>
           </div>
           
-          <div className="bg-white rounded-xl shadow-sm p-6 border">
+          <div className="bg-white rounded-lg shadow-md p-5">
             <div className="flex items-center">
-              <div className="p-3 rounded-full bg-red-100">
-                <span className="text-2xl">❌</span>
+              <div className="p-3 rounded-full bg-red-100 mr-4">
+                <span className="text-xl">❌</span>
               </div>
-              <div className="ml-4">
-                <p className="text-sm font-medium text-gray-600">Tidak Aktif</p>
+              <div>
+                <p className="text-sm font-medium text-gray-500">Tidak Aktif</p>
                 <p className="text-2xl font-bold text-red-600">
                   {umkmList.filter(umkm => !umkm.isActive).length}
                 </p>
@@ -264,13 +264,13 @@ export default function AdminUMKMManagement() {
             </div>
           </div>
           
-          <div className="bg-white rounded-xl shadow-sm p-6 border">
+          <div className="bg-white rounded-lg shadow-md p-5">
             <div className="flex items-center">
-              <div className="p-3 rounded-full bg-purple-100">
-                <span className="text-2xl">📂</span>
+              <div className="p-3 rounded-full bg-purple-100 mr-4">
+                <span className="text-xl">📂</span>
               </div>
-              <div className="ml-4">
-                <p className="text-sm font-medium text-gray-600">Kategori</p>
+              <div>
+                <p className="text-sm font-medium text-gray-500">Kategori</p>
                 <p className="text-2xl font-bold text-purple-600">{categories.length}</p>
               </div>
             </div>
@@ -278,11 +278,11 @@ export default function AdminUMKMManagement() {
         </div>
 
         {/* Filters and Search */}
-        <div className="bg-white rounded-xl shadow-sm p-6 mb-8 border">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+        <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 items-end">
             {/* Search */}
             <div className="lg:col-span-2">
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-700">
                 Cari UMKM
               </label>
               <input
@@ -290,19 +290,19 @@ export default function AdminUMKMManagement() {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder="Nama UMKM, pemilik, atau produk..."
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                className="mt-1 block w-full px-4 py-2 text-gray-800 bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-colors duration-300"
               />
             </div>
 
             {/* Category Filter */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-700">
                 Kategori
               </label>
               <select
                 value={filterCategory}
                 onChange={(e) => setFilterCategory(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
+                className="mt-1 block w-full px-4 py-2 text-gray-800 bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-colors duration-300"
               >
                 <option value="all">Semua Kategori</option>
                 {categories.map(category => (
@@ -313,13 +313,13 @@ export default function AdminUMKMManagement() {
 
             {/* Dusun Filter */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-700">
                 Dusun
               </label>
               <select
                 value={filterDusun}
                 onChange={(e) => setFilterDusun(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
+                className="mt-1 block w-full px-4 py-2 text-gray-800 bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-colors duration-300"
               >
                 <option value="all">Semua Dusun</option>
                 {dusuns.map(dusun => (
@@ -330,13 +330,13 @@ export default function AdminUMKMManagement() {
 
             {/* Status Filter */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-700">
                 Status
               </label>
               <select
                 value={filterStatus}
                 onChange={(e) => setFilterStatus(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
+                className="mt-1 block w-full px-4 py-2 text-gray-800 bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-colors duration-300"
               >
                 <option value="all">Semua Status</option>
                 <option value="active">Aktif</option>
@@ -344,45 +344,42 @@ export default function AdminUMKMManagement() {
               </select>
             </div>
           </div>
+        </div>
 
-          {/* Bulk Actions */}
+        {/* Results Info and Bulk Actions */}
+        <div className="flex justify-between items-center mb-4">
+          <div className="text-sm text-gray-600">
+            Menampilkan <span className="font-semibold">{filteredUMKM.length}</span> dari <span className="font-semibold">{umkmList.length}</span> total UMKM
+          </div>
+          
           {selectedItems.length > 0 && (
-            <div className="mt-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-blue-800">
-                  {selectedItems.length} UMKM dipilih
-                </span>
-                <div className="flex items-center space-x-2">
-                  <select
-                    value={bulkAction}
-                    onChange={(e) => setBulkAction(e.target.value)}
-                    className="px-3 py-1 border border-blue-300 rounded text-sm"
-                  >
-                    <option value="">Pilih Aksi</option>
-                    <option value="activate">Aktifkan</option>
-                    <option value="deactivate">Nonaktifkan</option>
-                    <option value="delete">Hapus</option>
-                  </select>
-                  <button
-                    onClick={handleBulkAction}
-                    disabled={!bulkAction}
-                    className="px-4 py-1 bg-blue-600 text-white rounded text-sm hover:bg-blue-700 disabled:opacity-50"
-                  >
-                    Jalankan
-                  </button>
-                </div>
-              </div>
+            <div className="flex items-center space-x-2">
+              <span className="text-sm font-medium text-gray-700">
+                {selectedItems.length} dipilih:
+              </span>
+              <select
+                value={bulkAction}
+                onChange={(e) => setBulkAction(e.target.value)}
+                className="block px-3 py-1.5 text-sm text-gray-800 bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-colors duration-300"
+              >
+                <option value="">Pilih Aksi</option>
+                <option value="activate">Aktifkan</option>
+                <option value="deactivate">Nonaktifkan</option>
+                <option value="delete">Hapus</option>
+              </select>
+              <button
+                onClick={handleBulkAction}
+                disabled={!bulkAction}
+                className="px-4 py-1.5 bg-blue-600 text-white rounded-lg text-sm font-semibold hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              >
+                Jalankan
+              </button>
             </div>
           )}
         </div>
 
-        {/* Results Info */}
-        <div className="mb-4 text-sm text-gray-600">
-          Menampilkan {filteredUMKM.length} dari {umkmList.length} UMKM
-        </div>
-
         {/* UMKM Table */}
-        <div className="bg-white rounded-xl shadow-sm overflow-hidden border">
+        <div className="bg-white rounded-lg shadow-md overflow-hidden">
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
@@ -417,7 +414,7 @@ export default function AdminUMKMManagement() {
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
                 {filteredUMKM.map((umkm) => (
-                  <tr key={umkm.id} className="hover:bg-gray-50">
+                  <tr key={umkm.id} className="hover:bg-gray-50 transition-colors">
                     <td className="px-6 py-4">
                       <input
                         type="checkbox"
@@ -430,8 +427,8 @@ export default function AdminUMKMManagement() {
                       <div className="flex items-center">
                         <div className="flex-shrink-0 h-10 w-10">
                           <div className="h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center">
-                            <span className="text-sm font-medium text-gray-600">
-                              {umkm.name.charAt(0).toUpperCase()}
+                            <span className="text-lg font-medium text-gray-600">
+                              {getCategoryIcon(umkm.category)}
                             </span>
                           </div>
                         </div>
@@ -446,7 +443,6 @@ export default function AdminUMKMManagement() {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
-                        <span className="mr-2">{getCategoryIcon(umkm.category)}</span>
                         <span className="text-sm text-gray-900">{umkm.category}</span>
                       </div>
                     </td>
@@ -465,23 +461,26 @@ export default function AdminUMKMManagement() {
                         className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
                           umkm.isActive 
                             ? 'bg-green-100 text-green-800 hover:bg-green-200' 
-                            : 'bg-red-100 text-red-800 hover:bg-red-200'
+                            : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
                         } transition-colors cursor-pointer`}
                       >
-                        {umkm.isActive ? '✅ Aktif' : '❌ Tidak Aktif'}
+                        <span className={`mr-1.5 h-2 w-2 rounded-full ${umkm.isActive ? 'bg-green-500' : 'bg-gray-500'}`}></span>
+                        {umkm.isActive ? 'Aktif' : 'Nonaktif'}
                       </button>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-4">
                       <Link
                         href={`/umkm/${umkm.id}`}
-                        className="text-blue-600 hover:text-blue-900"
+                        className="text-blue-600 hover:text-blue-800 transition-colors"
                         target="_blank"
+                        title="Lihat Halaman Publik"
                       >
                         Lihat
                       </Link>
                       <Link
                         href={`/admin/umkm/edit/${umkm.id}`}
-                        className="text-green-600 hover:text-green-900"
+                        className="text-green-600 hover:text-green-800 transition-colors"
+                        title="Edit UMKM"
                       >
                         Edit
                       </Link>
@@ -490,7 +489,8 @@ export default function AdminUMKMManagement() {
                           setDeleteTarget(umkm.id)
                           setShowDeleteModal(true)
                         }}
-                        className="text-red-600 hover:text-red-900"
+                        className="text-red-600 hover:text-red-800 transition-colors"
+                        title="Hapus UMKM"
                       >
                         Hapus
                       </button>

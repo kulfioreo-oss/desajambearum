@@ -73,3 +73,10 @@ model Product {
   @@index([umkmId])
   @@index([isAvailable])
 }
+
+model Setting {
+  key       String   @id
+  value     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

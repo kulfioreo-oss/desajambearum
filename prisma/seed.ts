@@ -11,31 +11,40 @@ async function main() {
     where: { username: 'admin' }
   })
 
-  if (existingAdmin) {
+  if (!existingAdmin) {
+    // Hash the default password
+    const hashedPassword = await bcrypt.hash('jambearum2024!', 12)
+
+    // Create default admin user
+    const admin = await prisma.admin.create({
+      data: {
+        username: 'admin',
+        password: hashedPassword,
+        email: 'admin@jambearum.desa.id',
+        name: 'Administrator',
+        role: 'admin',
+        isActive: true
+      }
+    })
+
+    console.log('✅ Default admin created:', {
+      id: admin.id,
+      username: admin.username,
+      email: admin.email,
+      name: admin.name
+    })
+  } else {
     console.log('✅ Default admin already exists')
-    return
   }
 
-  // Hash the default password
-  const hashedPassword = await bcrypt.hash('jambearum2024!', 12)
-
-  // Create default admin user
-  const admin = await prisma.admin.create({
-    data: {
-      username: 'admin',
-      password: hashedPassword,
-      email: 'admin@jambearum.desa.id',
-      name: 'Administrator',
-      role: 'admin',
-      isActive: true
+  // Ensure default admin WhatsApp setting exists
+  await prisma.setting.upsert({
+    where: { key: 'admin_whatsapp' },
+    update: {},
+    create: {
+      key: 'admin_whatsapp',
+      value: '6281234567890'
     }
-  })
-
-  console.log('✅ Default admin created:', {
-    id: admin.id,
-    username: admin.username,
-    email: admin.email,
-    name: admin.name
   })
 
   // Create some sample UMKM data

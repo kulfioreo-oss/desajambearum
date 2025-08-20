@@ -526,10 +526,10 @@ export default function WisataPage() {
                 Lihat UMKM Lokal
               </Link>
               <Link 
-                href="/#kontak" 
+                href="/umkm" 
                 className="border-2 border-white text-white hover:bg-white hover:text-green-900 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300"
               >
-                Hubungi Guide Lokal
+                Lihat Produk Lokal
               </Link>
             </div>
           </div>

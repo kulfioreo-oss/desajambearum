@@ -90,7 +90,7 @@ export default function Home() {
               Dari Kerajaan Biarum hingga menjadi desa yang berkembang di kaki Gunung Raung
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <div className="bg-white p-8 rounded-2xl shadow-lg">
@@ -207,79 +207,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="py-20 bg-green-800 text-white">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-4xl font-bold mb-6">Hubungi Kami</h2>
-              <p className="text-green-100 mb-8 text-lg">
-                Tertarik dengan produk UMKM kami atau ingin berkunjung ke Desa Jambearum? 
-                Jangan ragu untuk menghubungi kami!
-              </p>
-              
-              <div className="space-y-4">
-                <div className="flex items-center">
-                  <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center mr-4">
-                    <span className="text-xl">📍</span>
-                  </div>
-                  <div>
-                    <div className="font-semibold">Alamat</div>
-                    <div className="text-green-100">Desa Jambearum, Kec. Silo, Kab. Jember, Jawa Timur</div>
-                  </div>
-                </div>
-                
-                <div className="flex items-center">
-                  <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center mr-4">
-                    <span className="text-xl">🚗</span>
-                  </div>
-                  <div>
-                    <div className="font-semibold">Akses</div>
-                    <div className="text-green-100">42 KM dari Kota Jember ke arah utara</div>
-                  </div>
-                </div>
-                
-                <div className="flex items-center">
-                  <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center mr-4">
-                    <span className="text-xl">👥</span>
-                  </div>
-                  <div>
-                    <div className="font-semibold">Mata Pencaharian</div>
-                    <div className="text-green-100">Mayoritas petani dan buruh tani</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div className="bg-white/10 backdrop-blur-lg p-8 rounded-2xl">
-              <h3 className="text-2xl font-bold mb-6">Kirim Pesan</h3>
-              <form className="space-y-4">
-                <input 
-                  type="text" 
-                  placeholder="Nama Lengkap" 
-                  className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-green-100 focus:outline-none focus:border-white"
-                />
-                <input 
-                  type="email" 
-                  placeholder="Email" 
-                  className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-green-100 focus:outline-none focus:border-white"
-                />
-                <textarea 
-                  placeholder="Pesan Anda" 
-                  rows={4}
-                  className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-green-100 focus:outline-none focus:border-white resize-none"
-                ></textarea>
-                <button 
-                  type="submit" 
-                  className="w-full bg-yellow-400 hover:bg-yellow-500 text-green-900 py-3 rounded-lg font-semibold transition-colors"
-                >
-                  Kirim Pesan
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-12">

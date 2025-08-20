@@ -207,28 +207,28 @@ export default function EditUMKM() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-100">
       {/* Header */}
-      <div className="bg-white shadow-sm border-b">
+      <div className="bg-white/80 backdrop-blur-lg sticky top-0 z-10 shadow-sm border-b">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-6">
+          <div className="flex justify-between items-center py-5">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">Edit UMKM</h1>
-              <p className="text-gray-600 mt-1">Perbarui informasi UMKM</p>
+              <h1 className="text-2xl font-bold text-gray-900">Edit UMKM</h1>
+              <p className="text-gray-500 mt-1 text-sm">Perbarui informasi UMKM</p>
             </div>
             <div className="flex items-center space-x-4">
               <Link 
                 href="/admin/umkm"
-                className="text-gray-600 hover:text-gray-800 transition-colors"
+                className="text-sm font-medium text-gray-600 hover:text-green-600 transition-colors flex items-center"
               >
-                ← Kembali ke Daftar UMKM
+                <span className="mr-1">←</span> Kembali ke Daftar
               </Link>
               <Link
                 href={`/umkm/${umkmId}`}
                 target="_blank"
-                className="text-blue-600 hover:text-blue-800 transition-colors"
+                className="text-sm font-medium text-blue-600 hover:text-blue-800 transition-colors flex items-center"
               >
-                👁️ Lihat Publik
+                Lihat Publik <span className="ml-1">👁️</span>
               </Link>
             </div>
           </div>
@@ -236,17 +236,17 @@ export default function EditUMKM() {
       </div>
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <form onSubmit={handleSubmit} className="space-y-8">
+        <form onSubmit={handleSubmit} className="space-y-6">
           {/* Basic Information */}
-          <div className="bg-white rounded-xl shadow-sm p-6 border">
+          <div className="bg-white rounded-lg shadow-md p-6">
             <h2 className="text-xl font-semibold text-gray-900 mb-6 flex items-center">
-              <span className="mr-2">ℹ️</span>
+              <span className="mr-3 text-xl">ℹ️</span>
               Informasi Dasar
             </h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="md:col-span-2">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-700">
                   Nama UMKM <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -255,13 +255,13 @@ export default function EditUMKM() {
                   value={formData.name}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                  placeholder="Masukkan nama UMKM..."
+                  className="mt-1 block w-full px-4 py-2 text-gray-800 bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-colors duration-300 placeholder-gray-400"
+                  placeholder="Contoh: Keripik Singkong Barokah"
                 />
               </div>
 
               <div className="md:col-span-2">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-700">
                   Deskripsi UMKM
                 </label>
                 <textarea
@@ -269,13 +269,13 @@ export default function EditUMKM() {
                   value={formData.description}
                   onChange={handleInputChange}
                   rows={4}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                  placeholder="Jelaskan tentang UMKM ini..."
+                  className="mt-1 block w-full px-4 py-2 text-gray-800 bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-colors duration-300 placeholder-gray-400"
+                  placeholder="Jelaskan tentang keunikan produk, sejarah singkat, dll."
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-700">
                   Kategori UMKM <span className="text-red-500">*</span>
                 </label>
                 <select
@@ -283,7 +283,7 @@ export default function EditUMKM() {
                   value={formData.category}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                  className="mt-1 block w-full px-4 py-2 text-gray-800 bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-colors duration-300"
                 >
                   <option value="">Pilih Kategori</option>
                   {categories.map(category => (
@@ -295,7 +295,7 @@ export default function EditUMKM() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-700">
                   Dusun <span className="text-red-500">*</span>
                 </label>
                 <select
@@ -303,7 +303,7 @@ export default function EditUMKM() {
                   value={formData.dusun}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                  className="mt-1 block w-full px-4 py-2 text-gray-800 bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-colors duration-300"
                 >
                   <option value="">Pilih Dusun</option>
                   {dusuns.map(dusun => (
@@ -313,7 +313,7 @@ export default function EditUMKM() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-700">
                   Nama Pemilik <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -322,27 +322,27 @@ export default function EditUMKM() {
                   value={formData.owner}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                  className="mt-1 block w-full px-4 py-2 text-gray-800 bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-colors duration-300 placeholder-gray-400"
                   placeholder="Nama lengkap pemilik..."
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Nomor Telepon
+                <label className="block text-sm font-medium text-gray-700">
+                  Nomor Telepon / WhatsApp
                 </label>
                 <input
                   type="tel"
                   name="phone"
                   value={formData.phone}
                   onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                  className="mt-1 block w-full px-4 py-2 text-gray-800 bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-colors duration-300 placeholder-gray-400"
                   placeholder="08xxxxxxxxxx"
                 />
               </div>
 
               <div className="md:col-span-2">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-700">
                   Alamat Lengkap
                 </label>
                 <textarea
@@ -350,7 +350,7 @@ export default function EditUMKM() {
                   value={formData.address}
                   onChange={handleInputChange}
                   rows={3}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                  className="mt-1 block w-full px-4 py-2 text-gray-800 bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-colors duration-300 placeholder-gray-400"
                   placeholder="Alamat lengkap UMKM..."
                 />
               </div>
@@ -358,9 +358,9 @@ export default function EditUMKM() {
           </div>
 
           {/* Products */}
-          <div className="bg-white rounded-xl shadow-sm p-6 border">
+          <div className="bg-white rounded-lg shadow-md p-6">
             <h2 className="text-xl font-semibold text-gray-900 mb-6 flex items-center">
-              <span className="mr-2">📦</span>
+              <span className="mr-3 text-xl">📦</span>
               Produk/Layanan
             </h2>
             
@@ -372,7 +372,7 @@ export default function EditUMKM() {
                       type="text"
                       value={product}
                       onChange={(e) => handleProductChange(index, e.target.value)}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                      className="w-full px-4 py-2 text-gray-800 bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-colors duration-300 placeholder-gray-400"
                       placeholder={`Produk/layanan ${index + 1}...`}
                     />
                   </div>
@@ -399,9 +399,9 @@ export default function EditUMKM() {
           </div>
 
           {/* Additional Info */}
-          <div className="bg-white rounded-xl shadow-sm p-6 border">
+          <div className="bg-white rounded-lg shadow-md p-6">
             <h2 className="text-xl font-semibold text-gray-900 mb-6 flex items-center">
-              <span className="mr-2">⚙️</span>
+              <span className="mr-3 text-xl">⚙️</span>
               Pengaturan Tambahan
             </h2>
             
