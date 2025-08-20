@@ -1,11 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { writeFile, mkdir } from 'fs/promises'
-import { existsSync } from 'fs'
-import path from 'path'
+import { put, del } from '@vercel/blob'
 import { v4 as uuidv4 } from 'uuid'
 import { getCurrentAdmin } from '@/lib/auth'
 
-const UPLOAD_DIR = path.join(process.cwd(), 'public/uploads')
 const MAX_FILE_SIZE = 5 * 1024 * 1024 // 5MB
 const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/gif']
 
@@ -46,23 +43,15 @@ export async function POST(request: NextRequest) {
       }, { status: 400 })
     }
 
-    // Ensure upload directory exists
-    if (!existsSync(UPLOAD_DIR)) {
-      await mkdir(UPLOAD_DIR, { recursive: true })
-    }
-
     // Generate unique filename
-    const fileExtension = path.extname(file.name)
-    const fileName = `${uuidv4()}${fileExtension}`
-    const filePath = path.join(UPLOAD_DIR, fileName)
+    const fileExtension = file.name.split('.').pop() || 'jpg'
+    const fileName = `umkm-${uuidv4()}.${fileExtension}`
 
-    // Convert file to buffer and save
-    const bytes = await file.arrayBuffer()
-    const buffer = Buffer.from(bytes)
-    await writeFile(filePath, buffer)
-
-    // Return the public URL
-    const fileUrl = `/uploads/${fileName}`
+    // Upload to Vercel Blob Storage
+    const blob = await put(fileName, file, {
+      access: 'public',
+      token: process.env.BLOB_READ_WRITE_TOKEN,
+    })
 
     return NextResponse.json({
       success: true,
@@ -72,7 +61,7 @@ export async function POST(request: NextRequest) {
         originalName: file.name,
         size: file.size,
         type: file.type,
-        url: fileUrl
+        url: blob.url
       }
     })
 
@@ -80,7 +69,7 @@ export async function POST(request: NextRequest) {
     console.error('Upload error:', error)
     return NextResponse.json({ 
       success: false, 
-      message: 'Failed to upload file' 
+      message: `Failed to upload file: ${error instanceof Error ? error.message : 'Unknown error'}` 
     }, { status: 500 })
   }
 }
@@ -98,28 +87,19 @@ export async function DELETE(request: NextRequest) {
     }
 
     const { searchParams } = new URL(request.url)
-    const filename = searchParams.get('filename')
+    const fileUrl = searchParams.get('url')
     
-    if (!filename) {
+    if (!fileUrl) {
       return NextResponse.json({ 
         success: false, 
-        message: 'No filename provided' 
+        message: 'No file URL provided' 
       }, { status: 400 })
     }
 
-    const filePath = path.join(UPLOAD_DIR, filename)
-    
-    // Check if file exists
-    if (!existsSync(filePath)) {
-      return NextResponse.json({ 
-        success: false, 
-        message: 'File not found' 
-      }, { status: 404 })
-    }
-
-    // Delete the file
-    const { unlink } = await import('fs/promises')
-    await unlink(filePath)
+    // Delete from Vercel Blob Storage
+    await del(fileUrl, {
+      token: process.env.BLOB_READ_WRITE_TOKEN,
+    })
 
     return NextResponse.json({
       success: true,
@@ -130,7 +110,7 @@ export async function DELETE(request: NextRequest) {
     console.error('Delete error:', error)
     return NextResponse.json({ 
       success: false, 
-      message: 'Failed to delete file' 
+      message: `Failed to delete file: ${error instanceof Error ? error.message : 'Unknown error'}` 
     }, { status: 500 })
   }
 } 

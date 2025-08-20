@@ -129,10 +129,9 @@ export default function ImageUpload({
   }
 
   const handleRemoveImage = async () => {
-    if (previewUrl && previewUrl.startsWith('/uploads/')) {
+    if (previewUrl && (previewUrl.startsWith('https://') || previewUrl.startsWith('/uploads/'))) {
       try {
-        const filename = previewUrl.split('/uploads/')[1]
-        await fetch(`/api/upload?filename=${filename}`, {
+        await fetch(`/api/upload?url=${encodeURIComponent(previewUrl)}`, {
           method: 'DELETE'
         })
       } catch (error) {

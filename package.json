@@ -20,6 +20,7 @@
     "@types/multer": "^2.0.0",
     "@types/pg": "^8.15.5",
     "@types/uuid": "^10.0.0",
+    "@vercel/blob": "^0.15.1",
     "bcryptjs": "^3.0.2",
     "jose": "^6.0.12",
     "multer": "^2.0.2",
