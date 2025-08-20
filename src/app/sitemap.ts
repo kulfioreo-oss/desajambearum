@@ -26,7 +26,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ]
 
-  // Dynamic UMKM pages
+    // Dynamic UMKM pages
   let umkmPages: MetadataRoute.Sitemap = []
   
   try {
@@ -34,8 +34,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       where: { isActive: true },
       select: { id: true, updatedAt: true }
     })
-
-    umkmPages = umkmList.map((umkm) => ({
+    
+    umkmPages = umkmList.map((umkm: { id: string; updatedAt: Date }) => ({
       url: `${baseUrl}/umkm/${umkm.id}`,
       lastModified: umkm.updatedAt,
       changeFrequency: 'weekly' as const,
