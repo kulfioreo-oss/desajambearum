@@ -35,6 +35,9 @@ model UMKM {
   isActive    Boolean  @default(true)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+  
+  // Relation to Products
+  catalogProducts Product[]
 }
 
 model Admin {
