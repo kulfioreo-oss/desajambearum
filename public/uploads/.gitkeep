@@ -1,0 +1,2 @@
+# This file ensures the uploads directory exists in version control
+# but doesn't track the uploaded files themselves 
